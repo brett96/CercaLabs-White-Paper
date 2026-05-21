@@ -1,4 +1,6 @@
 import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
+import { SiteFooter } from "@/components/marketing/SiteFooter";
+import { SiteNav } from "@/components/marketing/SiteNav";
 import "@/styles/cercalabs.css";
 
 export default function MarketingLayout({
@@ -12,7 +14,11 @@ export default function MarketingLayout({
         fontFamily: "var(--font-body), 'Nunito Sans', sans-serif",
       }}
     >
-      <AnalyticsProvider>{children}</AnalyticsProvider>
+      <AnalyticsProvider>
+        <SiteNav />
+        {children}
+        <SiteFooter />
+      </AnalyticsProvider>
     </div>
   );
 }

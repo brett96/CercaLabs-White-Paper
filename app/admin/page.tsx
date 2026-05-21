@@ -129,6 +129,24 @@ export default async function AdminOverviewPage() {
 
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
+          <CardTitle className="text-lg">White paper PDF</CardTitle>
+          <Link
+            href="/admin/whitepaper"
+            className="text-sm text-teal-700 hover:underline"
+          >
+            Manage upload
+          </Link>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-slate-600">
+            Upload the visitor download PDF to Firebase Storage from the PDF admin
+            page. Downloads are served via signed URLs after form submission.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-lg">Recent leads</CardTitle>
           <Link href="/admin/leads" className="text-sm text-teal-700 hover:underline">
             View all

@@ -42,7 +42,10 @@ npm run dev
    - **Email**: `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `LEAD_NOTIFICATION_EMAIL`
    - **Admin seed**: `ADMIN_SEED_EMAIL`, `ADMIN_SEED_PASSWORD`
    - **GA4 (optional)**: `NEXT_PUBLIC_GA_MEASUREMENT_ID`
+   - **Nav links**: `NEXT_PUBLIC_MAIN_SITE_URL` (e.g. `https://cercalabs.com`) for Home/Services
+   - **PDF**: `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY`, `FIREBASE_STORAGE_BUCKET`
 3. Redeploy. `postbuild` runs `drizzle-kit push` and seeds admin when a database URL is set.
+4. Sign in at `/login`, open **Admin → PDF**, and upload the guide PDF.
 
 ### Custom domain paths
 
@@ -64,7 +67,16 @@ Vercel Analytics does not replace GA4 for UTM/referrer campaign reporting at the
 
 ## White paper form
 
-Captures: first name, last name, work email, organization, role, email opt-in, do-not-sell checkbox. Stored in `whitepaper_leads`; team notification via Gmail when configured. PDF delivery and nurture sequences are out of scope for this repo.
+Captures: first name, last name, work email, organization, role, email opt-in, do-not-sell checkbox. Stored in `whitepaper_leads`; team notification via Gmail when configured. After submit, the browser opens `/api/whitepaper-pdf` (Firebase signed URL) when an admin has uploaded a PDF.
+
+## White paper PDF (Firebase)
+
+1. Create a Firebase project and enable **Storage**.
+2. Create a service account with Storage Admin (or object admin on the bucket).
+3. Add env vars from `.env.example` (private key as one line with `\n`).
+4. Upload at `/admin/whitepaper`. Metadata is stored in `site_settings`; the file lives in `whitepapers/ai-vs-automation/` in your bucket.
+
+Email nurture sequences remain out of scope.
 
 ## Stack
 

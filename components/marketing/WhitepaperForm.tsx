@@ -92,6 +92,7 @@ export function WhitepaperForm() {
       setHidden(true);
       const success = document.getElementById("success-state");
       if (success) success.style.display = "block";
+      window.open("/api/whitepaper-pdf", "_blank", "noopener,noreferrer");
     } catch {
       setError("Network error. Please try again.");
     } finally {
