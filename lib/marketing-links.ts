@@ -8,8 +8,16 @@ export function getMainSiteUrl(): string {
 
 export const CONTACT_EMAIL = "info@cercalabs.com";
 
+/**
+ * Services page URL. Do not derive from MAIN_SITE_URL when that points at this
+ * white-paper deployment (e.g. cercalabs-whitepaper.vercel.app/services 404s).
+ */
 export function mainSiteServicesUrl(): string {
-  return `${getMainSiteUrl()}/services`;
+  const explicit = process.env.NEXT_PUBLIC_SERVICES_URL?.trim();
+  if (explicit) {
+    return explicit.replace(/\/$/, "");
+  }
+  return "https://cercalabs.com/services";
 }
 
 export function mainSiteHomeUrl(): string {

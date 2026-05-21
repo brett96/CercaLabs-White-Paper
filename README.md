@@ -42,10 +42,10 @@ npm run dev
    - **Email**: `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `LEAD_NOTIFICATION_EMAIL`
    - **Admin seed**: `ADMIN_SEED_EMAIL`, `ADMIN_SEED_PASSWORD`
    - **GA4 (optional)**: `NEXT_PUBLIC_GA_MEASUREMENT_ID`
-   - **Nav links**: `NEXT_PUBLIC_MAIN_SITE_URL` (e.g. `https://cercalabs.com`) for Home/Services
-   - **PDF**: `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY`, `FIREBASE_STORAGE_BUCKET`
+   - **Nav links**: `NEXT_PUBLIC_MAIN_SITE_URL` for Home (logo). Use `NEXT_PUBLIC_SERVICES_URL` for Services (defaults to `https://cercalabs.com/services` — do not point Services at this Vercel URL unless that page exists here).
+   - **PDF (optional)**: Firebase vars override the bundled PDF in `public/pdf/CercaLabs_WP1.pdf`
 3. Redeploy. `postbuild` runs `drizzle-kit push` and seeds admin when a database URL is set.
-4. Sign in at `/login`, open **Admin → PDF**, and upload the guide PDF.
+4. Firebase upload at `/admin/whitepaper` is optional; downloads work without it.
 
 ### Custom domain paths
 
@@ -67,14 +67,15 @@ Vercel Analytics does not replace GA4 for UTM/referrer campaign reporting at the
 
 ## White paper form
 
-Captures: first name, last name, work email, organization, role, email opt-in, do-not-sell checkbox. Stored in `whitepaper_leads`; team notification via Gmail when configured. After submit, the browser opens `/api/whitepaper-pdf` (Firebase signed URL) when an admin has uploaded a PDF.
+Captures: first name, last name, work email, organization, role, email opt-in, do-not-sell checkbox. Stored in `whitepaper_leads`; team notification via Gmail when configured. After submit, the browser opens `/api/whitepaper-pdf`, which serves the bundled PDF or a Firebase upload if configured.
 
-## White paper PDF (Firebase)
+## White paper PDF
 
-1. Create a Firebase project and enable **Storage**.
-2. Create a service account with Storage Admin (or object admin on the bucket).
-3. Add env vars from `.env.example` (private key as one line with `\n`).
-4. Upload at `/admin/whitepaper`. Metadata is stored in `site_settings`; the file lives in `whitepapers/ai-vs-automation/` in your bucket.
+**Default (no Firebase):** `public/pdf/CercaLabs_WP1.pdf` is committed with the repo and deployed on Vercel. `/api/whitepaper-pdf` redirects to `/pdf/CercaLabs_WP1.pdf` when Firebase is unset or no admin upload exists.
+
+**Optional override:** Configure Firebase and upload at `/admin/whitepaper` to replace the default file.
+
+`/services` on this app redirects to `NEXT_PUBLIC_SERVICES_URL` (default `https://cercalabs.com/services`).
 
 Email nurture sequences remain out of scope.
 

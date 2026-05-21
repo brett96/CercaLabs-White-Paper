@@ -89,8 +89,9 @@ export function WhitepaperPdfUpload() {
       <CardHeader>
         <CardTitle className="text-lg">White paper PDF</CardTitle>
         <CardDescription>
-          Upload the guide PDF to Firebase Storage. After a visitor submits the
-          landing form, they receive a download via a signed link.
+          Optional: upload a PDF to Firebase to override the bundled default (
+          CercaLabs_WP1.pdf). Visitors always get a download after form submit —
+          Firebase when configured, otherwise the file in public/pdf/.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">

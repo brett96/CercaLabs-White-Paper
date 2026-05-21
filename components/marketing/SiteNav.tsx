@@ -1,9 +1,5 @@
 import Link from "next/link";
-import {
-  contactMailto,
-  mainSiteHomeUrl,
-  mainSiteServicesUrl,
-} from "@/lib/marketing-links";
+import { contactMailto, mainSiteHomeUrl } from "@/lib/marketing-links";
 
 const LOGO_SVG = (
   <svg
@@ -28,7 +24,6 @@ const LOGO_SVG = (
 
 export function SiteNav() {
   const home = mainSiteHomeUrl();
-  const services = mainSiteServicesUrl();
 
   return (
     <nav>
@@ -41,9 +36,7 @@ export function SiteNav() {
           <a href={home}>Home</a>
         </li>
         <li>
-          <a href={services} target="_blank" rel="noopener noreferrer">
-            Services
-          </a>
+          <a href="/services">Services</a>
         </li>
         <li>
           <a href={contactMailto()}>Contact</a>
