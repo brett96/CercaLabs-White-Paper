@@ -6,13 +6,13 @@ Production Next.js 15 site for the AI vs. Automation RCM white paper landing pag
 
 | URL | Page |
 |-----|------|
-| `/ai-vs-automation` | White paper landing + download form |
+| `/` | White paper landing + download form |
+| `/ai-vs-automation` | Same landing (direct campaign link) |
+| `/services` | Services overview (on this site) |
 | `/privacy-policy` | Privacy policy |
 | `/do-not-sell` | CCPA privacy requests |
 | `/admin` | Analytics & leads (password protected) |
 | `/login` | Admin sign-in |
-
-`/` redirects to `/ai-vs-automation`.
 
 ## Local development
 
@@ -42,7 +42,6 @@ npm run dev
    - **Email**: `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `LEAD_NOTIFICATION_EMAIL`
    - **Admin seed**: `ADMIN_SEED_EMAIL`, `ADMIN_SEED_PASSWORD`
    - **GA4 (optional)**: `NEXT_PUBLIC_GA_MEASUREMENT_ID`
-   - **Nav links**: `NEXT_PUBLIC_MAIN_SITE_URL` for Home (logo). Use `NEXT_PUBLIC_SERVICES_URL` for Services (defaults to `https://cercalabs.com/services` — do not point Services at this Vercel URL unless that page exists here).
    - **PDF (optional)**: Firebase vars override the bundled PDF in `public/pdf/CercaLabs_WP1.pdf`
 3. Redeploy. `postbuild` runs `drizzle-kit push` and seeds admin when a database URL is set.
 4. Firebase upload at `/admin/whitepaper` is optional; downloads work without it.
@@ -75,7 +74,7 @@ Captures: first name, last name, work email, organization, role, email opt-in, d
 
 **Optional override:** Configure Firebase and upload at `/admin/whitepaper` to replace the default file.
 
-`/services` on this app redirects to `NEXT_PUBLIC_SERVICES_URL` (default `https://cercalabs.com/services`).
+Nav links (Home, Services, Free Guide) stay on this deployment (`/`, `/services`, `/ai-vs-automation`).
 
 Email nurture sequences remain out of scope.
 

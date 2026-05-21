@@ -1,7 +1,12 @@
-import { redirect } from "next/navigation";
-import { mainSiteServicesUrl } from "@/lib/marketing-links";
+import type { Metadata } from "next";
+import { ServicesPageContent } from "@/components/marketing/ServicesPageContent";
 
-/** Resolves /services on this host (e.g. Vercel) to the real services page. */
-export default function ServicesRedirectPage() {
-  redirect(mainSiteServicesUrl());
+export const metadata: Metadata = {
+  title: "Services | CercaLabs",
+  description:
+    "RCM workflow automation and AI strategy for specialty and genomics labs.",
+};
+
+export default function ServicesPage() {
+  return <ServicesPageContent />;
 }

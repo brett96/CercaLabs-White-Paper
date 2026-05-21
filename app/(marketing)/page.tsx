@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-/** Direct-link URL for campaigns (same content as home). */
-export default function AiVsAutomationPage() {
+export default function HomePage() {
   return <WhitepaperLanding />;
 }

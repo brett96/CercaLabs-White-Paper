@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { contactMailto, mainSiteHomeUrl } from "@/lib/marketing-links";
+import {
+  appFreeGuidePath,
+  appHomePath,
+  appServicesPath,
+  contactMailto,
+} from "@/lib/marketing-links";
 
 const LOGO_SVG = (
   <svg
@@ -23,26 +28,24 @@ const LOGO_SVG = (
 );
 
 export function SiteNav() {
-  const home = mainSiteHomeUrl();
-
   return (
     <nav>
-      <a href={home} className="nav-logo">
+      <Link href={appHomePath()} className="nav-logo">
         {LOGO_SVG}
         <span className="nav-logo-text">CercaLabs</span>
-      </a>
+      </Link>
       <ul className="nav-links">
         <li>
-          <a href={home}>Home</a>
+          <Link href={appHomePath()}>Home</Link>
         </li>
         <li>
-          <a href="/services">Services</a>
+          <Link href={appServicesPath()}>Services</Link>
         </li>
         <li>
           <a href={contactMailto()}>Contact</a>
         </li>
         <li>
-          <Link href="/ai-vs-automation">Free Guide</Link>
+          <Link href={appFreeGuidePath()}>Free Guide</Link>
         </li>
       </ul>
     </nav>
