@@ -96,6 +96,23 @@ export default async function AdminOverviewPage() {
         </CardContent>
       </Card>
 
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between">
+          <div>
+            <CardTitle className="text-lg">Visitor analytics</CardTitle>
+            <CardDescription>
+              IP, country, city, browser, and device breakdowns with time filters
+            </CardDescription>
+          </div>
+          <Link
+            href="/admin/traffic"
+            className="text-sm text-teal-700 hover:underline"
+          >
+            Open analytics →
+          </Link>
+        </CardHeader>
+      </Card>
+
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
           <CardHeader>
